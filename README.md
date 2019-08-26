@@ -4,8 +4,9 @@
   <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/sensei-logo.png" width="100" title="Sensei">
   <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/pizza.png" width="100" alt="Pizza">
 </p>
-Sample flutter project of pizza order system  
+Sample Flutter project  
 by omuralcin
+
 ## What is PIZZA SENSEI
 
 This project is a starting point for a Flutter application.
