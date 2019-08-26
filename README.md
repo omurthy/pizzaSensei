@@ -9,3 +9,5 @@ It is a good sample for any order system
 
 ![alt text](https://github.com/omurthy/pizzaSensei/blob/master/images/sensei-logo.png)
  
+
+![alt text](https://github.com/omurthy/pizzaSensei/blob/master/images/pizza.png)
