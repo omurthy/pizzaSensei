@@ -1,11 +1,11 @@
 
 # PIZZA SENSEI
 <p align="center">
-  <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/sensei-logo.png" width="50" title="Sensei">
-  <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/pizza.png" width="50" alt="Pizza">
+  <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/sensei-logo.png" width="100" title="Sensei">
+  <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/pizza.png" width="100" alt="Pizza">
 </p>
-Flutter project of pizza order system
-
+Sample flutter project of pizza order system  
+by omuralcin
 ## What is PIZZA SENSEI
 
 This project is a starting point for a Flutter application.
