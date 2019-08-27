@@ -19,3 +19,7 @@ It is a good sample for any order system
     <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/home.PNG" width="150" alt="HomeScreen">
     <img src="https://github.com/omurthy/pizzaSensei/blob/master/images/comments.PNG" width="150" alt="CommentScreen">
 </p>
+
+
+## ICONS 
+https://www.flaticon.com/search?word=pizza&style_id=134
