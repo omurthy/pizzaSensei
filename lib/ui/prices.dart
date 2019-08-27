@@ -7,6 +7,7 @@ class Prices extends StatefulWidget {
 
 class _Prices extends State<Prices> {
   final _currencies = ['Dollars', 'Euro', 'Pounds'];
+  final double _formDistance = 5.0;
   String _currency = 'Dollars';
   String result = '';
   TextEditingController distanceController = TextEditingController();
@@ -23,39 +24,50 @@ class _Prices extends State<Prices> {
         body: Container(
             padding: EdgeInsets.all(15),
             child: Column(children: <Widget>[
-              TextField(
-                controller: distanceController,
-                decoration: InputDecoration(
-                    hintText: 'e.g 23.0',
-                    labelStyle: textStyle,
-                    labelText: 'Distance',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
-                keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.deepOrangeAccent),
-              ),
-              TextField(
-                controller: awgController,
-                decoration: InputDecoration(
-                    hintText: 'e.g 17.0',
-                    labelStyle: textStyle,
-                    labelText: 'Distance per Unit',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
-                keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.deepOrangeAccent),
-              ),
-              TextField(
-                controller: priceController,
-                decoration: InputDecoration(
-                    hintText: 'e.g 1.65',
-                    labelStyle: textStyle,
-                    labelText: 'Price',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
-                keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.deepOrangeAccent),
-              ),
+              Padding(
+                  padding: EdgeInsets.only(
+                      top: _formDistance, bottom: _formDistance),
+                  child: TextField(
+                    controller: distanceController,
+                    decoration: InputDecoration(
+                        hintText: 'e.g 23.0',
+                        labelStyle: textStyle,
+                        labelText: 'Distance',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.deepOrangeAccent),
+                  )),
+              Padding(
+                  padding: EdgeInsets.only(
+                      top: _formDistance, bottom: _formDistance),
+                  child: TextField(
+                    controller: awgController,
+                    decoration: InputDecoration(
+                        hintText: 'e.g 17.0',
+                        labelStyle: textStyle,
+                        labelText: 'Distance per Unit',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.deepOrangeAccent),
+                  )),
+              Padding(
+                  padding: EdgeInsets.only(
+                      top: _formDistance, bottom: _formDistance),
+                  child: 
+                  TextField(
+                    controller: priceController,
+                    decoration: InputDecoration(
+                        hintText: 'e.g 1.65',
+                        labelStyle: textStyle,
+                        labelText: 'Price',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.deepOrangeAccent),
+                  )),
+              
               DropdownButton<String>(
                 items: this._currencies.map((String val) {
                   return DropdownMenuItem<String>(value: val, child: Text(val));
@@ -65,17 +77,33 @@ class _Prices extends State<Prices> {
                 },
                 value: _currency,
               ),
-              RaisedButton(
-                color: Theme.of(context).primaryColorDark,
-                textColor: Theme.of(context).primaryColorLight,
-                child: Text('Submit'),
-                onPressed: () {
-                  setState(() {
-                    result = _calculate();
-                  });
-                },
+              Row(
+                children: <Widget>[
+                  Expanded(
+                      child: RaisedButton(
+                    color: Theme.of(context).primaryColorDark,
+                    textColor: Theme.of(context).primaryColorLight,
+                    child: Text('Submit'),
+                    onPressed: () {
+                      setState(() {
+                        result = _calculate();
+                      });
+                    },
+                  )),
+                  Expanded(
+                      child: RaisedButton(
+                    color: Theme.of(context).primaryColor,
+                    textColor: Theme.of(context).primaryColorLight,
+                    child: Text('Reset'),
+                    onPressed: () {
+                      setState(() {
+                          _reset();
+                      });
+                    },
+                  )),
+                ],
               ),
-              Text(result),
+              Expanded(child: Text(result)),
             ])));
   }
 
@@ -96,5 +124,15 @@ class _Prices extends State<Prices> {
         ' ' +
         _currency;
     return _result;
+  }
+
+  void _reset() {
+    distanceController.text = '';
+    priceController.text = '';
+    awgController.text = '';
+
+    setState(() {
+      result = '';
+    });
   }
 }
