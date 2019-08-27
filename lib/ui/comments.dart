@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './home.dart';
+ 
 
 class Comments extends StatefulWidget {
   @override
@@ -47,8 +47,7 @@ class _Comments extends State<Comments> {
                     });
                   },
                 ),
-                DropdownButton<String>(
-                   
+                DropdownButton<String>( 
                   items: _currencies.map((String value) {
                     return DropdownMenuItem<String>(
                         value: value, 
