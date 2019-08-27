@@ -71,7 +71,7 @@ class _Prices extends State<Prices> {
                 child: Text('Submit'),
                 onPressed: () {
                   setState(() {
-                    result = distanceController.text;
+                    result = _calculate();
                   });
                 },
               ),
@@ -95,5 +95,6 @@ class _Prices extends State<Prices> {
         _totalCost.toStringAsFixed(2) +
         ' ' +
         _currency;
+    return _result;
   }
 }
