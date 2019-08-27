@@ -83,7 +83,8 @@ class _Prices extends State<Prices> {
                       child: RaisedButton(
                     color: Theme.of(context).primaryColorDark,
                     textColor: Theme.of(context).primaryColorLight,
-                    child: Text('Submit'),
+                    child: Text('Submit', textScaleFactor : 1.5),
+                   
                     onPressed: () {
                       setState(() {
                         result = _calculate();
@@ -94,7 +95,7 @@ class _Prices extends State<Prices> {
                       child: RaisedButton(
                     color: Theme.of(context).primaryColor,
                     textColor: Theme.of(context).primaryColorLight,
-                    child: Text('Reset'),
+                    child: Text('Reset', textScaleFactor : 1.5),
                     onPressed: () {
                       setState(() {
                           _reset();
