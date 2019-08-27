@@ -6,7 +6,7 @@ void main(){
     
     debugShowCheckedModeBanner: false,
     title:"PizzaSensei",
-    home : new Home(),
+    home : new Comments(),
   ));
   
   }
