@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-// import './ui/home.dart';
-// import './ui/comments.dart';
-import './ui/prices.dart';
+// import './screens/home.dart';
+// import './screens/comments.dart';
+//import './screens/prices.dart'; 
+import './screens/orders.dart'; 
+
 void main(){ 
+ 
   runApp(new MaterialApp(
-    
+
     debugShowCheckedModeBanner: false,
     title:"PizzaSensei",
-    home : new Prices(),
+    home : new Orders(),
   ));
   
   }
