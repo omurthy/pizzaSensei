@@ -57,8 +57,8 @@ class Todo {
   /* Convert to Object from Map */
   Todo.fromObject(dynamic o) {
     this._id = o['id'];
-    this._description = o['description'];
     this._title = o['title'];
+    this._description = o['description'];
     this._priority = o['priority'];
     this._date = o['date'];
   }
