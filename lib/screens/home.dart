@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:pizzaSensei/screens/orderList.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -120,7 +120,7 @@ class ContactButton extends StatelessWidget{
   void contactAlert(BuildContext context){
     var alert = AlertDialog(
       title: Text("Contact Informations" ),
-      content: Text('Tel : 0557 557 82 55',textDirection: TextDirection.ltr), 
+      content: Text('Tel : 0557 557 88 55',textDirection: TextDirection.ltr), 
       );
        
        showDialog(
@@ -171,14 +171,17 @@ class OrderButton extends StatelessWidget {
         color: Colors.lightGreen,
         elevation: 5.0,
         onPressed: () {
-          order(context);
+          Navigator.push(context,MaterialPageRoute(
+            builder: (context)=>OrderList()
+          ));
+         /*  order(context); */
         },
       ),
     );
     return button;
   }
 
-  void order(BuildContext context) {
+/*   void order(BuildContext context) {
     var alert = AlertDialog(
       title: Text("Order Completed"),
       content: Text("Thanks for your order"),
@@ -188,6 +191,6 @@ class OrderButton extends StatelessWidget {
         builder: (BuildContext context) {
           return alert;
         });
-  }
+  } */
 }
  

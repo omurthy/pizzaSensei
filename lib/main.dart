@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import './screens/home.dart';
+ import './screens/home.dart';
 // import './screens/comments.dart';
 //import './screens/prices.dart';
-import './screens/orderList.dart';
+//import './screens/orderList.dart';
 
 void main()  =>
   runApp(new MyApp());  
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "PizzaSensei",
       theme: new ThemeData(primarySwatch: Colors.deepOrange),
-      home: new MyHomePage(title: "PizzaSensei Orders"),
+      home: new MyHomePage(title: "Welcome to PizzaSensei"),
     );
   }
 }
@@ -31,12 +31,12 @@ class _MyHomePageState extends State<MyHomePage>{
   @override
   Widget build(BuildContext context) {
       
-    return new Scaffold(
+    return new Scaffold(/* 
       appBar: new AppBar(
         title: new Text(widget.title),
 
-      ),
-      body: OrderList(),
+      ), */
+      body: Home(),
     );
   }
  

@@ -5,6 +5,13 @@ import 'package:pizzaSensei/screens/orderDetail.dart';
 
 import 'package:pizzaSensei/model/todo.dart';
 
+import 'home.dart';
+import 'prices.dart';
+
+final List<String> choices = ['Prices', 'Back to Home'];
+const String mnuPrices = 'Prices';
+const String mnuBackToHome = 'Back to Home';
+
 class OrderList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _OrderList();
@@ -29,11 +36,26 @@ class _OrderList extends State {
       getData();
     }
     return Scaffold(
+      appBar: AppBar(actions: <Widget>[
+        PopupMenuButton<String>(
+          onSelected: select,
+          itemBuilder: (BuildContext context) {
+            return choices.map((String choice) {
+              return PopupMenuItem<String>(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          },
+        ),
+      ]),
       body: todoListItems(),
       floatingActionButton: FloatingActionButton(
-          onPressed:() {
-            navigationToDetail(Todo("", 1,""));
-          }, tooltip: "Add new Todo", child: new Icon(Icons.add)),
+          onPressed: () {
+            navigationToDetail(Todo("", 1, ""));
+          },
+          tooltip: "Add new Todo",
+          child: new Icon(Icons.add)),
     );
   }
 
@@ -54,7 +76,6 @@ class _OrderList extends State {
             onTap: () {
               debugPrint("Tapped on " + this.todos[position].id.toString());
               navigationToDetail(this.todos[position]);
-
             },
           ),
         );
@@ -69,43 +90,54 @@ class _OrderList extends State {
       final todosFuture = helper.getTodos();
       debugPrint("todos starting ");
       todosFuture.then((result) {
-        debugPrint("todos entered "+ result.length.toString());
+        debugPrint("todos entered " + result.length.toString());
         List<Todo> todoList = new List<Todo>();
         count = result.length;
-        for (int i=0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
           todoList.add(Todo.fromObject(result[i]));
           debugPrint(todoList[i].title);
         }
-         setState(() {
+        setState(() {
           todos = todoList;
           count = count;
-        });  
-        debugPrint("ITEMS " + count.toString());  
+        });
+        debugPrint("ITEMS " + count.toString());
       });
     });
   }
 
-
-  Color getColor(int priority){
+  Color getColor(int priority) {
     switch (priority) {
-      case 2:  
+      case 2:
         return Colors.red;
         break;
-      case 3:  
+      case 3:
         return Colors.orange;
         break;
-      case 1:  
+      case 1:
         return Colors.green;
         break;
       default:
     }
   }
 
-  void navigationToDetail(Todo todo)async {
-    bool result = await Navigator.push(context,
-    MaterialPageRoute(builder: (context) => OrderDetail(todo) ));
-    if(result==true){
+  void navigationToDetail(Todo todo) async {
+    bool result = await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => OrderDetail(todo)));
+    if (result == true) {
       getData();
+    }
+  }
+
+  void select(String value) {
+    switch (value) {
+      case mnuBackToHome:
+      Navigator.push(context, MaterialPageRoute(builder:(context)=>Home()));
+        break;
+      case mnuPrices:
+      Navigator.push(context, MaterialPageRoute(builder:(context)=>Prices()));
+        break;
+      default:
     }
   }
 }
