@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaSensei/util/dbhelper.dart';
 
+import 'package:pizzaSensei/screens/orderDetail.dart';
+
 import 'package:pizzaSensei/model/todo.dart';
 
-class Orders extends StatefulWidget {
+class OrderList extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _Orders();
+  State<StatefulWidget> createState() => _OrderList();
 }
 
-class _Orders extends State {
+class _OrderList extends State {
   List<Todo> todos;
   DBHelper helper = DBHelper();
   int count = 0;
@@ -16,13 +18,11 @@ class _Orders extends State {
   Widget build(BuildContext context) {
     /*   helper.initializeDB().then(
         (result) => helper.getTodos().then((result)=>todos=result)
-      );
-            DateTime today = DateTime.now();
-      Todo todo =  Todo("Mozarilla", today.toString(), 2, "Pizza with Mozarilla Cheese");
+      ); 
+      DateTime today = DateTime.now();
+      Todo todo =  Todo("Mozarilla", 3, today.toString(), "With Mozarilla cheese ");
       helper.insertTodo(todo);
-    DateTime today = DateTime.now();
-    Todo todo = Todo("Mozarilla",today.toString(),2,"Pizza with Mozarilla Cheese");
-     helper.insertTodo(todo); */
+     */
     if (todos == null) {
       todos = List<Todo>();
 
@@ -31,7 +31,9 @@ class _Orders extends State {
     return Scaffold(
       body: todoListItems(),
       floatingActionButton: FloatingActionButton(
-          onPressed: null, tooltip: "Add new Todo", child: new Icon(Icons.add)),
+          onPressed:() {
+            navigationToDetail(Todo("", 1,""));
+          }, tooltip: "Add new Todo", child: new Icon(Icons.add)),
     );
   }
 
@@ -44,13 +46,15 @@ class _Orders extends State {
           elevation: 2.0,
           child: ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.red,
-              child: Text(this.todos[position].id.toString()),
+              backgroundColor: getColor(this.todos[position].priority),
+              child: Text(this.todos[position].priority.toString()),
             ),
             title: Text(this.todos[position].title),
-            subtitle: Text(this.todos[position].date),
+            subtitle: Text(this.todos[position].description),
             onTap: () {
               debugPrint("Tapped on " + this.todos[position].id.toString());
+              navigationToDetail(this.todos[position]);
+
             },
           ),
         );
@@ -79,5 +83,29 @@ class _Orders extends State {
         debugPrint("ITEMS " + count.toString());  
       });
     });
+  }
+
+
+  Color getColor(int priority){
+    switch (priority) {
+      case 2:  
+        return Colors.red;
+        break;
+      case 3:  
+        return Colors.orange;
+        break;
+      case 1:  
+        return Colors.green;
+        break;
+      default:
+    }
+  }
+
+  void navigationToDetail(Todo todo)async {
+    bool result = await Navigator.push(context,
+    MaterialPageRoute(builder: (context) => OrderDetail(todo) ));
+    if(result==true){
+      getData();
+    }
   }
 }

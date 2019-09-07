@@ -3,11 +3,11 @@ class Todo {
   int _id;
   String _title;
   String _description;
-  String _date;
   int _priority;
+  String _date;
 
   /* Constructor and namedConstructor methods */
-  Todo(this._title, this._date, this._priority, [this._description]);
+  Todo(this._title, this._priority, this._date, [this._description]);
   Todo.withID( this._id,this._title,this._priority, this._date, 
       [this._description]);
 

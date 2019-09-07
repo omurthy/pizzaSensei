@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import './screens/home.dart';
 // import './screens/comments.dart';
 //import './screens/prices.dart';
-import './screens/orders.dart';
+import './screens/orderList.dart';
 
 void main()  =>
   runApp(new MyApp());  
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "PizzaSensei",
       theme: new ThemeData(primarySwatch: Colors.deepOrange),
-      home: new MyHomePage(title: "Todo App"),
+      home: new MyHomePage(title: "PizzaSensei Orders"),
     );
   }
 }
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage>{
         title: new Text(widget.title),
 
       ),
-      body: Orders(),
+      body: OrderList(),
     );
   }
  
